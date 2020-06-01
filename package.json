@@ -1,16 +1,23 @@
 {
-	"name": "czwartkowe_miski",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"gulp": "^4.0.2",
-		"gulp-livereload": "^4.0.2",
-		"gulp-sass": "^4.0.2"
-	}
+  "name": "planer_motywator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benroszko/planer_motywator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benroszko/planer_motywator/issues"
+  },
+  "homepage": "https://github.com/benroszko/planer_motywator#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

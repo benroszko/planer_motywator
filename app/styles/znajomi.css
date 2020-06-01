@@ -1,0 +1,93 @@
+.add-btn {
+    position: fixed;
+    left: 300px;
+    top: 588px;
+    color: #073B4C;
+}
+  
+.invert{
+    filter: invert(100%)
+}
+
+.navbar {
+    display: table;
+    width: 375px;
+    height:80px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-elem {
+    float: none;
+    display: table-cell;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+
+.form {
+    width: 335px;
+    padding-left: 20px;
+    padding-bottom:20px;
+    padding-top: 20px;
+}
+
+.input-group {
+    width: 335px;
+    height: 30px;
+    position: relative;
+}
+
+.form-control {
+    font-size: 19px;
+    height: 30px;
+}
+
+.input-group-btn {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    z-index: 3;
+}
+
+.list {
+    width: 335px;
+    padding-left: 20px;
+}
+
+.list-elem {
+    background-color: #118AB2;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    height: 60px;
+    width: 335px;
+    position: relative;
+}
+
+.list-elem:checked {
+    background-color: #073B4C;
+}
+
+.list-elem-nick {
+    padding-top: 7px;
+    padding-left: 10px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.list-elem-level {
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.list-elem-img {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+body{
+    background-color: #F8F8F8;
+    font-family: "Roboto";
+}
