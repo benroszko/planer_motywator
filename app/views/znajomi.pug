@@ -11,6 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Znajomi</title>
+    script(src="scripts/znajomi.js")
 </head>
 <body>
     <nav class = "navbar sticky-top">
@@ -25,24 +26,29 @@
         </a>
     </nav>
 
-    <form class="form">
+    <form class="form" oninput="formChanged()" method="post">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Pseudonim znajomego">
+            <input type="text" class="form-control" name="nick" placeholder="Pseudonim znajomego">
             <div class="input-group-btn">
-                <button class="btn btn-default" type="submit" style="padding:0px;">
-                    <i class="fa fa-search fa-lg"></i>
-                </button>
+                <i class="fa fa-search fa-lg" ></i>
             </div>
         </div>
     </form>
 
     <div class="list">
-        each friend in friends
-            .list-elem
-                .list-elem-nick= friend.nick
-                .list-elem-level= friend.lvl
-                .list-elem-img
-                    img(src= friend.img)
+        each user in users
+            if !user.friend
+                .list-elem.not-friend(style= "display: none;")
+                    .list-elem-nick= user.nick
+                    .list-elem-level= `Poziom: ${user.lvl}`
+                    .list-elem-img
+                        img(src= user.img)
+            else
+                .list-elem(style= "display: block;")
+                    .list-elem-nick= user.nick
+                    .list-elem-level= `Poziom: ${user.lvl}`
+                    .list-elem-img
+                        img(src= user.img)
 
         //-     <div class="list-elem">
         //-         <div class="list-elem-nick">
@@ -57,9 +63,9 @@
         //-     </div>
     </div>
 
-    <div class="add-btn">
-        <i class="fa fa-circle fa-4x" style="color:#F0F0F0; opacity:0.6;"></i>
-        <i class="fa fa-plus fa-4x" style="opacity:0.6; position: absolute; left:2px; top:3px;"></i>
+    <div class="add-btn" onclick="onClick()" style="opacity:0.6;">
+        <i class="fa fa-circle fa-4x" style="color:#F0F0F0;"></i>
+        <i class="fa fa-plus fa-4x" style="position: absolute; left:2px; top:3px;"></i>
     </div>
 </body>
 </html>

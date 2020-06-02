@@ -46,7 +46,7 @@
 
 .input-group-btn {
     position: absolute;
-    top: 0px;
+    top: 2px;
     right: 5px;
     z-index: 3;
 }
@@ -65,8 +65,8 @@
     position: relative;
 }
 
-.list-elem:checked {
-    background-color: #073B4C;
+.not-friend {
+    background-color: #06D6A0;
 }
 
 .list-elem-nick {
@@ -89,5 +89,5 @@
 
 body{
     background-color: #F8F8F8;
-    font-family: "Roboto";
+    font-family: 'Roboto', sans-serif;
 }

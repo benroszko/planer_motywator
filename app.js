@@ -2,27 +2,43 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = express.Router();
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(express.static(__dirname + '/app'));
 app.set('view engine', 'pug')
-
-
-friends = [{nick:'Jan', lvl:2, img:'../resources/picture.svg'},
-           {nick:'Sześcian', lvl:8, img:'../resources/picture.svg'}, 
-           {nick:'Ośmiościan', lvl:11, img:'../resources/picture.svg'}]
-
 const views_path = __dirname + '/app/views/'
 
-router.get('/planer',function(req,res){
+
+users = [{nick:'Jan', lvl:2, img:'../resources/picture.svg', friend:true},
+            {nick:'Sześcian', lvl:8, img:'../resources/picture.svg', friend:true}, 
+            {nick:'Ośmiościan', lvl:11, img:'../resources/picture.svg', friend:true},
+            {nick:'Pjoter', lvl:2, img:'../resources/picture.svg', friend:false},
+            {nick:'Osa', lvl:8, img:'../resources/picture.svg', friend:false}]
+
+
+router.get('/planer', function(req,res){
   res.render(path.join(views_path + 'planer'), {})
 });
 
-router.get('/znajomi',function(req,res){
-  res.render(path.join(views_path + 'znajomi'), { friends: friends})
+router.get('/znajomi', function(req,res){
+  res.render(path.join(views_path + 'znajomi'), {users: users})
 });
 
-router.get('/widok_dnia',function(req,res){
+router.post('/znajomi', function(req,res){
+  for(var i=0; i<users.length; i++){
+    if(users[i].nick == req.body.nick){
+      users[i].friend = true;
+      break;
+    }
+  }
+ 
+  res.render(path.join(views_path + 'znajomi'), {users: users})
+});
+
+router.get('/widok_dnia', function(req,res){
   res.render(path.join(views_path + 'widok_dnia'), {})
 });
 
