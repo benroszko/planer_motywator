@@ -4,7 +4,7 @@
   margin-left: 20px;
   margin-top: 15px;
   padding: 7px 10px;
-  font-family: 'Roboto', sans-serif;;
+  font-family: "Roboto";
   font-size: 14px;
   color: #FFFFFF;
   background-color: #073B4C;
@@ -18,7 +18,7 @@
   width: 335px;
   height: 45px;
   padding: 0 10px;
-  font-family: 'Roboto', sans-serif;;
+  font-family: "Roboto";
   font-size: 29px;
   color: #FFFFFF;
   background-color: #073B4C; }
@@ -38,7 +38,7 @@
   width: 335px;
   height: 35px;
   padding: 5px 10px;
-  font-family: 'Roboto', sans-serif;;
+  font-family: "Roboto";
   font-size: 19px;
   color: #FFFFFF;
   background-color: #118AB2; }
@@ -76,21 +76,21 @@ span {
 .hour {
   margin-right: auto;
   align-self: center;
-  padding: 1px 4px;
+  padding: 1px 5px;
   width: 40px;
   height: 20px;
   background-color: #073B4C;
   color: #FFFFFF;
   border: 1px #797979;
   border-radius: 5px;
-  font-family: 'Roboto', sans-serif;;
+  font-family: "Roboto";
   font-size: 13px; }
 
 .priority {
   margin-left: 10px;
-  padding: 0.5px 6.5px;
+  padding: 0 7px;
   align-self: center;
-  font-family: 'Roboto', sans-serif;;
+  font-family: "Roboto";
   font-size: 13px;
   width: 20px;
   height: 20px;

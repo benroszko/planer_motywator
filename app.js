@@ -18,6 +18,43 @@ users = [{nick:'Jan', lvl:2, img:'../resources/picture.svg', friend:true},
             {nick:'Pjoter', lvl:2, img:'../resources/picture.svg', friend:false},
             {nick:'Osa', lvl:8, img:'../resources/picture.svg', friend:false}]
 
+days = [
+  {
+    id: "01.06, Poniedzialek",
+    tasks: [
+      {
+        id: "Zadanie Akka",
+        status: "SUCCESS",
+        hour: "09:00",
+        priority: 2
+      },
+      {
+        id: "Zadanie UX",
+        status: "SUCCESS",
+        hour: "11:30",
+        priority: 1
+      },
+      {
+        id: "Projekt inzynierka",
+        status: "FAILURE",
+        hour: "012:00",
+        priority: 1
+      },
+      {
+        id: "Kompilatory lab4",
+        status: "PROGRESS",
+        hour: "16:00",
+        priority: 3
+      },
+      {
+        id: "Silownia",
+        status: "PROGRESS",
+        hour: "17:00",
+        priority: 2
+      }
+    ]
+  }
+]
 
 router.get('/planer', function(req,res){
   res.render(path.join(views_path + 'planer'), {})
@@ -38,8 +75,14 @@ router.post('/znajomi', function(req,res){
   res.render(path.join(views_path + 'znajomi'), {users: users})
 });
 
+router.get('/widok_dnia/:dayId', function(req,res){
+  const index = parseInt(req.params['dayId']);
+  console.log(index);
+  res.render(path.join(views_path + 'widok_dnia'), {day: days[index]})
+});
+
 router.get('/widok_dnia', function(req,res){
-  res.render(path.join(views_path + 'widok_dnia'), {})
+  res.render(path.join(views_path + 'widok_dnia'));
 });
 
 //add the router
