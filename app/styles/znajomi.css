@@ -91,3 +91,9 @@ body{
     background-color: #F8F8F8;
     font-family: 'Roboto', sans-serif;
 }
+
+.friend-not-found{
+    display: none;
+    font-size: 19px;
+    padding-left: 10px;
+}

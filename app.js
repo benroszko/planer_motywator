@@ -13,11 +13,23 @@ app.set('view engine', 'pug')
 const views_path = __dirname + '/app/views/'
 
 
-users = [{nick:'Jan', lvl:2, img:'resources/picture.svg', friend:true},
-            {nick:'Sześcian', lvl:8, img:'resources/picture.svg', friend:true}, 
-            {nick:'Ośmiościan', lvl:11, img:'resources/picture.svg', friend:true},
-            {nick:'Pjoter', lvl:2, img:'resources/picture.svg', friend:false},
-            {nick:'Osa', lvl:8, img:'resources/picture.svg', friend:false}]
+users = [{nick:'Jan3', lvl:2, img:'resources/picture.svg', friend:true},
+            {nick:'Piotrek12', lvl:6, img:'resources/picture.svg', friend:true}, 
+            {nick:'Łukasz2115', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Ośmiościan8', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Pietruszk@', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Alpaka318', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'AnnaZaradna', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Mirinda', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Andrzej', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Radekkk', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Kas1a', lvl:8, img:'resources/picture.svg', friend:true},
+            {nick:'Pjoter213', lvl:2, img:'resources/picture.svg', friend:false},
+            {nick:'Osa123456', lvl:8, img:'resources/picture.svg', friend:false},
+            {nick:'Lexus13', lvl:2, img:'resources/picture.svg', friend:false},
+            {nick:'Arbuz', lvl:8, img:'resources/picture.svg', friend:false},
+            {nick:'Pesos21', lvl:2, img:'resources/picture.svg', friend:false},
+            {nick:'Maradona', lvl:8, img:'resources/picture.svg', friend:false}]
 
 days = [
   {
