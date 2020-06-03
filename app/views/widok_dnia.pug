@@ -11,54 +11,81 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Widok dnia</title>
+    script(src="../scripts/widok_dnia.js")
 </head>
 <body style="background-color: #F8F8F8">
-    <input class="go-back-btn" type="button" value="WRÓĆ DO KALENDARZA">
+    <a href="../planer"><input class="go-back-btn" type="button" value="WRÓĆ DO KALENDARZA"></a>
     <div class="day-view-header">
-        | 15.05, Piątek
-        <i class="fa fa-filter filter"></i>
+        | #{day.id}
+        i(class="fa fa-filter filter", onclick="openFilter()")
     </div>
-    //-<div class="list-elem">
-    //-    <div class="yellow-square"></div>
-    //-    <div class="hour">09:00</div>
-    //-    <span>Zadnie Akka</span>
-    //-    <div class="priority">3</div>
-    //-</div>
-    //-<div class="list-elem">
-    //-    <div class="yellow-square"></div>
-    //-    <div class="hour">09:30</div>
-    //-    <span>Isc pobiegac</span>
-    //-    <div class="priority">1</div>
-    //-</div>
-    //-<div class="list-elem green-border">
-    //-    <div class="status green-square"></div>
-    //-    <div class="hour">12:00</div>
-    //-    <span>Isc na silownie</span>
-    //-    <div class="priority">2</div>
-    //-</div>
-    //-<div class="list-elem green-border">
-    //-    <div class="green-square"></div>
-    //-    <div class="hour">14:00</div>
-    //-    <span>Zadnie z jebanego UX</span>
-    //-    <div class="priority">3</div>
-    //-</div>
+    <div class="filter-bar" hidden>
+        <select class="form-control sort-by" required>
+            <option value="" selected disabled hidden>Sortuj po</option>
+            <option value="status">Status</option>
+            <option value="hour">Godzina</option>
+            <option value="name">Nazwa</option>
+            <option value="priority">Priorytet</option>
+        </select>
+        <input type="button" value="Zastosuj" class="sort-btn" onclick="applyFilter()">
+    </div>
 
-
+    <div id="kek" class="kek" hidden></div>
+    //<div class="list-elem">
+    //    <div class="yellow-square"></div>
+    //    <div class="hour">09:00</div>
+    //    <span>Zadnie Akka</span>
+    //    <div class="priority">3</div>
+    //</div>
+    //<div class="list-elem">
+    //    <div class="yellow-square"></div>
+    //    <div class="hour">09:30</div>
+    //    <span>Isc pobiegac</span>
+    //    <div class="priority">1</div>
+    //</div>
+    //<div class="list-elem green-border">
+    //    <div class="status green-square"></div>
+    //    <div class="hour">12:00</div>
+    //    <span>Isc na silownie</span>
+    //    <div class="priority">2</div>
+    //</div>
+    //<div class="list-elem green-border">
+    //    <div class="green-square"></div>
+    //    <div class="hour">14:00</div>
+    //    <span>Zadnie z jebanego UX</span>
+    //    <div class="priority">3</div>
+    //</div>
+    //<div class="list-elem saturate">
+    //    <div class="red-square"></div>
+    //    <div class="hour">17:00</div>
+    //    <span class="name">Dokonczyc logowanie</span>
+    //    <div class="priority">1</div>
+    //</div>
 
     <div class="list">
-        each task in day.tasks
-            .list-elem
-                .hour= task.hour
-                .name= task.id
-                .priority= task.priority
-
-    //-<div class="list-elem saturate">
-    //-    <div class="red-square"></div>
-    //-    <div class="hour">17:00</div>
-    //-    <span class="name">Dokonczyc logowanie</span>
-    //-    <div class="priority">1</div>
-    //-</div>
+        each task, index in day.tasks
+            a(href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                case task.status
+                    when "SUCCESS"
+                            .list-elem.green-border
+                                .green-square
+                                .hour= task.hour
+                                span(class="name")= task.id
+                                .priority= task.priority
+                    when "PROGRESS"
+                            .list-elem
+                                .yellow-square
+                                .hour= task.hour
+                                span(class="name")= task.id
+                                .priority= task.priority
+                    when "FAILURE"
+                            .list-elem.opacity
+                                .red-square
+                                .hour= task.hour
+                                span(class="name")= task.id
+                                .priority= task.priority
     </div>
-    <i class="fa fa-plus-circle add-btn fa-4x"></i>
+
+    <a href=../dodawanie-usuwanie-zadania><i class="fa fa-plus-circle add-btn fa-4x"></i></a>
 </body>
 </html>

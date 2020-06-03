@@ -24,6 +24,12 @@ days = [
     id: "01.06, Poniedzialek",
     tasks: [
       {
+        id: "Pobudka",
+        status: "FAILURE",
+        hour: "07:00",
+        priority: 2
+      },
+      {
         id: "Zadanie Akka",
         status: "SUCCESS",
         hour: "09:00",
@@ -38,7 +44,7 @@ days = [
       {
         id: "Projekt inzynierka",
         status: "FAILURE",
-        hour: "012:00",
+        hour: "12:00",
         priority: 1
       },
       {
@@ -52,6 +58,59 @@ days = [
         status: "PROGRESS",
         hour: "17:00",
         priority: 2
+      },
+      {
+        id: "CS",
+        status: "PROGRESS",
+        hour: "19:00",
+        priority: 1
+      },
+      {
+        id: "Spacer z psem",
+        status: "SUCCESS",
+        hour: "20:00",
+        priority: 2
+      },
+      {
+        id: "Spakowac sie",
+        status: "PROGRESS",
+        hour: "21:30",
+        priority: 2
+      },
+      {
+        id: "Isc spac",
+        status: "PROGRESS",
+        hour: "23:00",
+        priority: 2
+      },
+      {
+        id: "Spac dalej",
+        status: "PROGRESS",
+        hour: "23:59",
+        priority: 3
+      },
+    ]
+  },
+  {
+    id: "02.06, Wtorek",
+    tasks: [
+      {
+        id: "Rozmowa o prace",
+        status: "PROGRESS",
+        hour: "11:15",
+        priority: 2
+      },
+      {
+        id: "ADPTO - projekt",
+        status: "SUCCESS",
+        hour: "11:45",
+        priority: 1
+      },
+      {
+        id: "ML - projekt",
+        status: "PROGRESS",
+        hour: "18:00",
+        priority: 3
       }
     ]
   }
@@ -79,7 +138,7 @@ router.post('/znajomi', function(req,res){
 router.get('/widok_dnia/:dayId', function(req,res){
   const index = parseInt(req.params['dayId']);
   console.log(index);
-  res.render(path.join(views_path + 'widok_dnia'), {day: days[index]})
+  res.render(path.join(views_path + 'widok_dnia'), {day: days[index], dayIndex: index})
 });
 
 router.get('/widok_dnia', function(req,res){
