@@ -22,6 +22,9 @@ users = [{nick:'Jan', lvl:2, img:'resources/picture.svg', friend:true},
 days = [
   {
     id: "01.06, Poniedzialek",
+    progress: 0,
+    top2:[],
+    extra:"",
     tasks: [
       {
         id: "Zadanie Akka",
@@ -38,7 +41,12 @@ days = [
       {
         id: "Projekt inzynierka",
         status: "FAILURE",
-        hour: "012:00",
+        hour: "12:00",
+        priority: 1
+      },{
+        id: "Obiad",
+        status: "FAILURE",
+        hour: "14:00",
         priority: 1
       },
       {
@@ -54,11 +62,65 @@ days = [
         priority: 2
       }
     ]
-  }
+  },
+
 ]
 
+prioTasks = {
+  1:{
+    id: "",
+    status: "",
+    hour: "",
+    date: "",
+    priority: 0
+  },
+  2:{
+    id: "",
+    status: "",
+    hour: "",
+    date: "",
+    priority: 0
+  }};
+
+
 router.get('/planer', function(req,res){
-  res.render(path.join(views_path + 'planer'), {})
+  days.forEach((day)=>{
+    let counter = 0;
+    let i =0;
+    day.top2=[];
+      day.tasks.forEach((task)=>{
+
+        if(task.status === "SUCCESS")counter++;
+        if(task.priority > prioTasks["1"].priority){
+            prioTasks["2"].id = prioTasks["1"].id;
+            prioTasks["2"].status = prioTasks["1"].status;
+            prioTasks["2"].hour = prioTasks["1"].hour;
+            prioTasks["2"].date = prioTasks["1"].date;
+            prioTasks["2"].priority = prioTasks["1"].priority;
+
+            prioTasks["1"].id = task.id;
+            prioTasks["1"].status = task.status;
+            prioTasks["1"].hour = task.hour;
+            prioTasks["1"].date = day.id.split(",")[0];
+            prioTasks["1"].priority = task.priority;
+
+          } else if(task.priority > prioTasks["2"].priority && task.id !== prioTasks["1"].id){
+            prioTasks["2"].id = task.id;
+            prioTasks["2"].status = task.status;
+            prioTasks["2"].hour = task.hour;
+            prioTasks["2"].date = day.id.split(",")[0];
+            prioTasks["2"].priority = task.priority;
+
+          }
+        if(i<2)day.top2.push(task);
+        i++;
+      }
+      );
+      day.extra = day.tasks.length > 2 ? "...+"+(day.tasks.length-2):"";
+      day.progress = parseInt((counter/(day.tasks.length)*100));
+
+  });
+  res.render(path.join(views_path + 'planer'), {tasks: prioTasks})
 });
 
 router.get('/znajomi', function(req,res){

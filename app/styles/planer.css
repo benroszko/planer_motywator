@@ -1,0 +1,199 @@
+.add-btn {
+    position: fixed;
+    left: 300px;
+    top: 588px;
+    color: #073B4C;
+}
+
+.invert{
+    filter: invert(100%)
+}
+
+.navbar {
+    display: table;
+    width: 375px;
+    height:80px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navbar-elem {
+    float: none;
+    display: table-cell;
+    text-align: center;
+    vertical-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+
+.form {
+    width: 335px;
+    padding-left: 20px;
+    padding-bottom:20px;
+    padding-top: 20px;
+}
+
+.input-group {
+    width: 335px;
+    height: 30px;
+    position: relative;
+}
+
+.form-control {
+    font-size: 19px;
+    height: 30px;
+}
+
+.input-group-btn {
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    z-index: 3;
+}
+
+.list {
+    width: 335px;
+    padding-left: 20px;
+}
+
+.list-elem {
+    background-color: #118AB2;
+    color: #FFFFFF;
+    margin-bottom: 12px;
+    height: 60px;
+    width: 335px;
+    position: relative;
+}
+
+.list-elem:checked {
+    background-color: #073B4C;
+}
+
+.list-elem-nick {
+    padding-top: 7px;
+    padding-left: 10px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.list-elem-level {
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.list-elem-img {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+.text-div{
+    background-color: #073B4C;
+    width: 375px;
+    height: 50px;
+    border-style: solid;
+    border-color: #797979;
+    border-width: 1px;
+}
+.main-text{
+    text-align: center;
+    color: #F8F8F8;
+    font-size: 29px;
+    margin-top: 3px;
+}
+.curr-tasks{
+    padding: 10px;
+    width: 375px;
+    height: 110px;
+}
+.task{
+    margin-left: 67.5px;
+    width: 240px;
+    height: 40px;
+    background-color: #118AB2;
+    margin-bottom: 10px;
+}
+.task-text{
+    margin-left: 10px;
+    padding: 10px;
+    font-size: 14px;
+    text-align: right;
+    display: inline-block;
+
+}
+.task-date{
+    margin-left: 20px;
+    margin-top: 8px;
+    font-size: 14px;
+    display: inline-block;
+
+}
+.week{
+    width: 375px;
+    height: 297px;
+}
+.day-field{
+    width: 375px;
+    height: 130px;
+    border: solid 1px #797979;
+    background-color: #F8F8F8;
+}
+.day-tasks{
+    margin-top: 15px;
+    width: 180px;
+    height: 100px;
+    float: right;
+    background-color: #118AB2;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 10px;
+}
+.day-desc{
+    margin-top: 15px;
+    margin-left: 15px;
+    width: 150px;
+    height: 50px;
+    position: absolute;
+    font-family: "Roboto", sans-serif;
+
+}
+.day-bar{
+    margin-top: 85px;
+    width: 150px;
+    height: 30px;
+    margin-left: 15px;
+    position: relative;
+    border: solid 1px #797979;
+    background-color: #F8F8F8;
+}
+.day-bar-desc{
+    position: absolute;
+    padding: 2px;
+    margin-left: 45px;
+}
+.day-bar-prog{
+    text-align: center;
+    font-size: 14px;
+    padding: 4px;
+    height: 28px;
+    background-color: #06D6A0;
+    position: absolute;
+    display: compact;
+}
+.day-weekday{
+    text-align: center;
+}
+.day-date{
+    text-align: center;
+}
+.day-task{
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+}
+.day-tasks-rest{
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+}
+body{
+    background-color: #F8F8F8;
+    font-family: "Roboto", sans-serif;
+}
