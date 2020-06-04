@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>Znajomi</title>
+<title>Planer</title>
 </head>
 <body>
 <nav class = "navbar sticky-top">
@@ -32,7 +32,6 @@
      .task
          .task-date= task.date +" "+task.hour
          .task-text= task.id
-
 </div>
 <div class="text-div">
 <p class="main-text">Planer</p>
@@ -43,37 +42,14 @@ each day in days
         .day-desc
             .day-weekday= day.id.split(",")[1]
             .day-date= day.id.split(",")[0]
-        .day-tasks
+        .day-tasks(onclick=`location.href='/widok_dnia/${day.ind}'`)
             each task in day.top2
                 .day-task= task.hour + " " + task.id
             .day-task= day.extra
         .day-bar
-            .day-bar-prog(style="width:" + day.progress + "% ")
+            .day-bar-prog(style="width:" + day.progress + "%")
             .day-bar-desc= "Progres"
-
-
-// each day in days
-
-// each friend in friends
-//     .list-elem
-//         .list-elem-nick= friend.nick
-//         .list-elem-level= friend.lvl
-//         .list-elem-img
-//             img(src= friend.img)
-
-//-     <div class="list-elem">
-//-         <div class="list-elem-nick">
-//-             val
-//-         </div>
-//-         <div class="list-elem-level">
-//-             Poziom: 13
-//-         </div>
-//-         <div class="list-elem-img">
-//-             <img src="../resources/picture.svg">
-//-         </div>
-//-     </div>
 </div>
-
 <div class="add-btn">
 <i class="fa fa-circle fa-4x" style="color:#F0F0F0; opacity:0.6;"></i>
 <i class="fa fa-plus fa-4x" style="opacity:0.6; position: absolute; left:2px; top:3px;"></i>

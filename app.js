@@ -34,6 +34,7 @@ users = [{nick:'Jan3', lvl:2, img:'resources/picture.svg', friend:true},
 days = [
   {
     id: "01.06, Poniedzialek",
+      ind:0,
     progress: 0,
     top2:[],
     extra:"",
@@ -113,6 +114,10 @@ days = [
   },
   {
     id: "02.06, Wtorek",
+      progress: 0,
+      ind:1,
+      top2:[],
+      extra:"",
     tasks: [
       {
         id: "Rozmowa o prace",
