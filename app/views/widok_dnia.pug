@@ -9,18 +9,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    script(src="../scripts/widok_dnia.js")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Widok dnia</title>
-    script(src="../scripts/widok_dnia.js")
 </head>
 <body style="background-color: #F8F8F8">
     <a href="../planer"><input class="go-back-btn" type="button" value="WRÓĆ DO KALENDARZA"></a>
     <div class="day-view-header">
         | #{day.id}
-        i(class="fa fa-filter filter", onclick="openFilter()")
+        i(class="fa fa-filter filter", onclick="openFilter()", style="cursor: pointer")
     </div>
     <div class="filter-bar" hidden>
-        <select class="form-control sort-by" required>
+        <select class="form-control sort-by" required style="cursor: pointer">
             <option value="" selected disabled hidden>Sortuj po</option>
             <option value="status">Status</option>
             <option value="hour">Godzina</option>
@@ -64,27 +64,35 @@
 
     <div class="list">
         each task, index in day.tasks
-            a(href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
                 case task.status
                     when "SUCCESS"
                             .list-elem.green-border
+                                <span class="complete" onclick="completeTask()" hidden>ZAKONCZ</span>
                                 .green-square
                                 .hour= task.hour
-                                span(class="name")= task.id
+                                a(class="name" href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                                    span(class="name")= task.id
                                 .priority= task.priority
+                                <span class="delete" onclick="removeTask()" hidden>USUN</span>
                     when "PROGRESS"
                             .list-elem
+                                <span class="complete" onclick="completeTask()" hidden>ZAKONCZ</span>
                                 .yellow-square
                                 .hour= task.hour
-                                span(class="name")= task.id
+                                a(class="name" href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                                    span(class="name")= task.id
                                 .priority= task.priority
+                                <span class="delete" onclick="removeTask()" hidden>USUN</span>
                     when "FAILURE"
                             .list-elem.opacity
+                                <span class="complete" onclick="completeTask()" hidden>ZAKONCZ</span>
                                 .red-square
                                 .hour= task.hour
-                                span(class="name")= task.id
+                                a(class="name" href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                                    span(class="name")= task.id
                                 .priority= task.priority
-    </div>
+                                <span class="delete" onclick="removeTask()" hidden>USUN</span>
+</div>
 
     <a href=../dodawanie-usuwanie-zadania><i class="fa fa-plus-circle add-btn fa-4x"></i></a>
 </body>

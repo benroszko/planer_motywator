@@ -224,6 +224,32 @@ router.get('/widok_dnia', function(req,res){
   res.render(path.join(views_path + 'widok_dnia'));
 });
 
+router.delete('/widok_dnia/:dayId/:taskId', function(req, res) {
+  const dayId = req.params['dayId'];
+  const taskId = req.params['taskId'];
+
+  console.log(dayId);
+  console.log(taskId);
+
+  const thisDay = days.filter(day => day.id === dayId)[0];
+  thisDay.tasks = thisDay.tasks.filter(t => t.id !== taskId);
+});
+
+router.put('/widok_dnia/:dayId/:taskId', function(req, res) {
+  const dayId = req.params['dayId'];
+  const taskId = req.params['taskId'];
+
+  console.log(dayId);
+  console.log(taskId);
+
+  const thisDay = days.filter(day => day.id === dayId)[0];
+  const thisTask = thisDay.tasks.filter(t => t.id === taskId)[0];
+  console.log(thisTask);
+  thisTask.status = 'SUCCESS';
+  console.log(thisTask);
+
+});
+
 //add the router
 app.use('/', router);
 app.listen(process.env.port || 3000);

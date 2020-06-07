@@ -47,7 +47,21 @@
 span {
   align-self: center;
   margin-left: auto;
-  margin-right: auto;}
+  margin-right: auto;
+}
+
+a {
+  color: #FFFFFF;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a:hover {
+  color: #DCDCDC;
+  display: inline-block;
+  text-decoration: none;
+}
 
 .green-border {
   box-shadow: inset 0 0 0 3px #06D6A0; }
@@ -108,11 +122,6 @@ span {
   top: 588px;
   color: #073B4C;}
 
-a:hover {
-  display: inline-block;
-  text-decoration: none;
-}
-
 .filter-bar {
   display: flex;
   margin: 25px 0 25px 20px;
@@ -144,4 +153,26 @@ a:hover {
   width: 100px;
   height: 30px;
   margin-right: 0;
+}
+
+.delete {
+  margin-right: 0;
+  margin-left: 5px;
+  padding: 8px 20px;
+  width: 80px;
+  height: 35px;
+  background-color: #EF476F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+}
+
+.complete {
+  margin-right: 5px;
+  margin-left: 0;
+  padding: 8px;
+  width: 80px;
+  height: 35px;
+  background-color: #06D6A0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
 }
