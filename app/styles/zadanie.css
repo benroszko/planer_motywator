@@ -1,0 +1,134 @@
+.task-header {
+  display: flex;
+  margin-top: 20px;
+  width: 335px;
+  height: 45px;
+  font-size: 29px;
+  color: #FFFFFF;
+  background-color: #073B4C;
+}
+
+.hour {
+  padding: 1px 5px;
+  background-color: #073B4C;
+  color: #FFFFFF;
+  font-size: 13px;
+  margin: 20px;
+}
+
+.down{
+	transform: rotate(45deg);
+}
+
+.up{
+	transform: rotate(225deg);
+}
+
+.priority-select {
+  position: absolute;
+  font-size: 29px;
+  right: 40px;
+  color: #FFFFFF;
+  background-color: #073B4C;
+  margin-top: 19px;
+  padding: 5px;
+}
+
+.priority-label {
+  position: relative;
+  left: 30px;
+  font-size: 29px;
+  margin-top: 15px;
+}
+
+.hour-input {
+  position: absolute;
+  font-size: 29px;
+  right: 37px;
+  width: 133px;
+  color: #FFFFFF;
+  background-color: #073B4C;
+  padding: 3px;
+}
+
+.hour-label {
+  position: relative;
+  left: 30px;
+  font-size: 29px;
+}
+
+body {
+  background-color: #F8F8F8;
+  font-family: 'Roboto', sans-serif;
+}
+
+form {
+  margin-left: 20px;
+}
+
+.submit-button {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  width: 120px;
+  height: 70px;
+  background-color: #073B4C;
+  word-wrap: break-word;
+  white-space: normal;
+  color: #FFFFFF;
+  font-size: 20px;
+}
+
+.friends {
+  margin-left: 20px;
+}
+
+.add-friends {
+  margin-left: 20px;
+}
+
+.friends-label {
+  font-size: 29px;
+}
+
+.friend-elem {
+  width: 335px;
+  height: 40px;
+  display: relative;
+  font-size: 19px;
+  color: #FFFFFF;
+  background-color: #073B4C;
+  padding: 7px;
+  margin-bottom: 5px;
+}
+
+.friend-nick {
+  position: absolute;
+}
+
+.button {
+  position: relative;
+  background-color: #06D6A0;
+  left: 255px;
+  bottom: 2px;
+  height: 30px;
+  width: 70px;
+  color: #FFFFFF;
+}
+
+.red {
+  background-color: #EF476F;
+}
+
+.green {
+  background-color: #06D6A0;
+}
+
+.status {
+  margin-left: 20px;
+}
+
+.status-button {
+  margin-right: 10px;
+  color: #FFFFFF;
+}

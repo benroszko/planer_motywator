@@ -34,7 +34,7 @@ users = [{nick:'Jan3', lvl:2, img:'resources/picture.svg', friend:true},
 days = [
   {
     id: "01.06, Poniedzialek",
-      ind:0,
+    ind: 0,
     progress: 0,
     top2:[],
     extra:"",
@@ -62,7 +62,8 @@ days = [
         status: "FAILURE",
         hour: "12:00",
         priority: 1
-      },{
+      },
+      {
         id: "Obiad",
         status: "FAILURE",
         hour: "14:00",
@@ -114,10 +115,10 @@ days = [
   },
   {
     id: "02.06, Wtorek",
-      progress: 0,
-      ind:1,
-      top2:[],
-      extra:"",
+    progress: 0,
+    ind:1,
+    top2:[],
+    extra:"",
     tasks: [
       {
         id: "Rozmowa o prace",
@@ -247,7 +248,39 @@ router.put('/widok_dnia/:dayId/:taskId', function(req, res) {
   console.log(thisTask);
   thisTask.status = 'SUCCESS';
   console.log(thisTask);
+});
 
+router.get('/zadanie/:dayId/:taskId', function(req,res){
+  const dayIndex = parseInt(req.params['dayId']);
+  const taskIndex = parseInt(req.params['taskId']);
+
+  res.render(path.join(views_path + 'zadanie'), {users: users, task: days[dayIndex].tasks[taskIndex]})
+});
+
+router.get('/zadanie', function(req,res){
+  var d = new Date();
+  var task = {
+    id: "",
+    status: "PROGRESS",
+    hour: `${d.getHours()}:${d.getMinutes()}`,
+    priority: 1
+  };
+  res.render(path.join(views_path + 'zadanie'), {users: users, task: task})
+});
+
+router.post('/zadanie/:dayId/:taskId', function(req,res){
+  // TODO: ADD/EDIT TASK
+  const dayId = req.params['dayId'];
+  const taskId = req.params['taskId'];
+
+  console.log(req.body)
+  days[dayId].tasks[taskId] = req.body;
+
+  res.redirect(`/widok_dnia/${dayId}`)
+});
+
+router.get('/', function(req,res){
+  res.redirect('/planer')
 });
 
 //add the router

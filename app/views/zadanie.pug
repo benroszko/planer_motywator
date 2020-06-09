@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../styles/zadanie.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Edycja zadania</title>
+    script(src="../../scripts/zadanie.js")
+</head>
+<body>
+    form(method="post")
+        input(class="task-header" type="text" name="id" value= task.id)
+        .form-group
+            <label class="priority-label" for="priority">Priorytet:</label>
+            select(class="priority-select" id="priority" name="priority")
+                option(value=1)= "Wysoki"
+                option(value=2)= "Średni"
+                option(value=3)= "Niski"
+        .form-group
+            <label class="hour-label" for="hour">Godzina:</label>
+            input(class="hour-input" type="time" id="hour" name="hour" value= task.hour)
+        input(type="submit" class="submit-button" value="Zakończ edycję")
+        input(type="text" class="status-input" name="status" value= task.status hidden)
+
+        
+    .friends
+        .friends-label= "Znajomi"
+        .friend-elem
+            .friend-nick= "Bartłomiej Rysz"
+            button(class="button red")= "Usuń"
+        .friend-elem
+            .friend-nick= "Mateusz Ćwierkiecki"
+            button(class="button red")= "Usuń"
+        .friend-elem
+            .friend-nick= "Witold Dzwinel"
+            button(class="button red")= "Usuń"
+    .add-friends
+        .friends-label= "Dodaj znajomych"
+        .friend-elem
+            .friend-nick= "Jan Kowalski"
+            button(class="button green")= "Dodaj"
+        .friend-elem
+            .friend-nick= "Marcin Przybysz"
+            button(class="button green")= "Dodaj"
+        .friend-elem
+            .friend-nick= "Joanna Kicpała"
+            button(class="button green")= "Dodaj"
+
+    .status
+        .friends-label= "Status zadania"
+        button(class="status-button red" onclick="onClickFailure()")= "Nieudane"
+        button(class="status-button green" onclick="onClickSuccess()")= "Zakończone"
+
+</body>
+</html>
