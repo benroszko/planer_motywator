@@ -37,8 +37,6 @@ function handleTouchMove(evt) {
         }
       } else element = evt.target;
 
-      if (element.childNodes[1].classList[0] === "green-square") return;
-
       if (element.childNodes[0].hidden) {
         element.childNodes[5].hidden = false;
         element.style.paddingRight = "0";
@@ -56,10 +54,8 @@ function handleTouchMove(evt) {
           element = evt.target.parentNode.parentNode;
         }
       } else element = evt.target;
-
-      if (element.childNodes[1].classList[0] === "green-square") return;
-
-      if (element.childNodes[5].hidden) {
+      
+      if (element.childNodes[5].hidden && element.childNodes[1].classList[0] !== "green-square") {
         element.childNodes[0].hidden = false;
         element.style.paddingLeft = "0";
       } else {
