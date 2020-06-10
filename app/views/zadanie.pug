@@ -19,38 +19,41 @@
         .form-group
             <label class="priority-label" for="priority">Priorytet:</label>
             select(class="priority-select" id="priority" name="priority")
-                option(value=1)= "Wysoki"
-                option(value=2)= "Średni"
-                option(value=3)= "Niski"
+                case task.priority
+                    when 1
+                        option(value=1 selected)= "Wysoki"
+                        option(value=2)= "Średni"
+                        option(value=3)= "Niski"
+                    when 2
+                        option(value=1)= "Wysoki"
+                        option(value=2 selected)= "Średni"
+                        option(value=3)= "Niski"
+                    when 3
+                        option(value=1)= "Wysoki"
+                        option(value=2)= "Średni"
+                        option(value=3 selected)= "Niski"
         .form-group
             <label class="hour-label" for="hour">Godzina:</label>
             input(class="hour-input" type="time" id="hour" name="hour" value= task.hour)
         input(type="submit" class="submit-button" value="Zakończ edycję")
-        input(type="text" class="status-input" name="status" value= task.status hidden)
+        input(class="status-input" name="status" value= task.status hidden)
+        input(class="friends-input" name="friends" value= task.friends hidden)
 
         
     .friends
         .friends-label= "Znajomi"
-        .friend-elem
-            .friend-nick= "Bartłomiej Rysz"
-            button(class="button red")= "Usuń"
-        .friend-elem
-            .friend-nick= "Mateusz Ćwierkiecki"
-            button(class="button red")= "Usuń"
-        .friend-elem
-            .friend-nick= "Witold Dzwinel"
-            button(class="button red")= "Usuń"
+        .scroll-list
+            each friend_nick in task.friends
+                .friend-elem
+                    .friend-nick= friend_nick
+                    button(class="button red" onclick="removeFriend(this)")= "Usuń"
     .add-friends
         .friends-label= "Dodaj znajomych"
-        .friend-elem
-            .friend-nick= "Jan Kowalski"
-            button(class="button green")= "Dodaj"
-        .friend-elem
-            .friend-nick= "Marcin Przybysz"
-            button(class="button green")= "Dodaj"
-        .friend-elem
-            .friend-nick= "Joanna Kicpała"
-            button(class="button green")= "Dodaj"
+        .scroll-list
+            each friend in inviteable
+                .friend-elem
+                    .friend-nick= friend.nick
+                    button(class="button green" onclick="addFriend(this)")= "Dodaj"
 
     .status
         .friends-label= "Status zadania"
@@ -58,4 +61,7 @@
         button(class="status-button green" onclick="onClickSuccess()")= "Zakończone"
 
 </body>
+    <script>
+        | document.querySelector("form").addEventListener('submit', onSubmit);
+    </script>
 </html>
