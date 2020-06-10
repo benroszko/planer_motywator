@@ -43,73 +43,109 @@ days = [
         id: "Pobudka",
         status: "FAILURE",
         hour: "07:00",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Zadanie Akka",
         status: "SUCCESS",
         hour: "09:00",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Zadanie UX",
         status: "SUCCESS",
         hour: "11:30",
-        priority: 1
+        priority: 1,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Projekt inzynierka",
         status: "FAILURE",
         hour: "12:00",
-        priority: 1
+        priority: 1,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Obiad",
         status: "FAILURE",
         hour: "14:00",
-        priority: 1
+        priority: 1,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Kompilatory lab4",
         status: "PROGRESS",
         hour: "16:00",
-        priority: 3
+        priority: 3,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Silownia",
         status: "PROGRESS",
         hour: "17:00",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "CS",
         status: "PROGRESS",
         hour: "19:00",
-        priority: 1
+        priority: 1,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Spacer z psem",
         status: "SUCCESS",
         hour: "20:00",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Spakowac sie",
         status: "PROGRESS",
         hour: "21:30",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Isc spac",
         status: "PROGRESS",
         hour: "23:00",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "Spac dalej",
         status: "PROGRESS",
         hour: "23:59",
-        priority: 3
+        priority: 3,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
     ]
   },
@@ -124,19 +160,28 @@ days = [
         id: "Rozmowa o prace",
         status: "PROGRESS",
         hour: "11:15",
-        priority: 2
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "ADPTO - projekt",
         status: "SUCCESS",
         hour: "11:45",
-        priority: 1
+        priority: 1,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       },
       {
         id: "ML - projekt",
         status: "PROGRESS",
         hour: "18:00",
-        priority: 3
+        priority: 3,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
       }
     ]
   },
@@ -253,7 +298,6 @@ router.post('/znajomi', function(req,res){
 
 router.get('/widok_dnia/:dayId', function(req,res){
   const index = parseInt(req.params['dayId']);
-  console.log(index);
   res.render(path.join(views_path + 'widok_dnia'), {day: days[index], dayIndex: index})
 });
 
@@ -264,9 +308,6 @@ router.get('/widok_dnia', function(req,res){
 router.delete('/widok_dnia/:dayId/:taskId', function(req, res) {
   const dayId = req.params['dayId'];
   const taskId = req.params['taskId'];
-
-  console.log(dayId);
-  console.log(taskId);
 
   const thisDay = days.filter(day => day.id === dayId)[0];
   thisDay.tasks = thisDay.tasks.filter(t => t.id !== taskId);
@@ -291,27 +332,43 @@ router.put('/widok_dnia/:dayId/:taskId', function(req, res) {
 router.get('/zadanie/:dayId/:taskId', function(req,res){
   const dayIndex = parseInt(req.params['dayId']);
   const taskIndex = parseInt(req.params['taskId']);
+  var task = days[dayIndex].tasks[taskIndex];
+  var inviteable = users.filter(user => user.friend && !task.friends.includes(user.nick));
 
-  res.render(path.join(views_path + 'zadanie'), {users: users, task: days[dayIndex].tasks[taskIndex]})
+  res.render(path.join(views_path + 'zadanie'), {inviteable: inviteable, task: task})
 });
 
-router.get('/zadanie', function(req,res){
+router.get('/zadanie/:dayId', function(req,res){
   var d = new Date();
   var task = {
     id: "",
     status: "PROGRESS",
     hour: `${d.getHours()}:${d.getMinutes()}`,
-    priority: 1
+    priority: 1,
+    friends: []
   };
-  res.render(path.join(views_path + 'zadanie'), {users: users, task: task})
+  var inviteable = users.filter(user => user.friend);
+
+  res.render(path.join(views_path + 'zadanie'), {inviteable: inviteable, task: task})
+});
+
+router.post('/zadanie/:dayId', function(req,res){
+  const dayIndex = parseInt(req.params['dayId']);
+
+  req.body.priority = parseInt(req.body.priority);
+  req.body.friends = JSON.parse(req.body.friends);
+  days[dayIndex].tasks.push(req.body)
+
+  res.redirect(`/widok_dnia/${dayIndex}`)
 });
 
 router.post('/zadanie/:dayId/:taskId', function(req,res){
-  // TODO: ADD/EDIT TASK
   const dayId = req.params['dayId'];
   const taskId = req.params['taskId'];
 
   console.log(req.body);
+  req.body.priority = parseInt(req.body.priority);
+  req.body.friends = JSON.parse(req.body.friends);
   days[dayId].tasks[taskId] = req.body;
 
   res.redirect(`/widok_dnia/${dayId}`)

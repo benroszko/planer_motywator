@@ -30,7 +30,7 @@
   right: 40px;
   color: #FFFFFF;
   background-color: #073B4C;
-  margin-top: 19px;
+  margin-top: 15px;
   padding: 5px;
 }
 
@@ -45,6 +45,7 @@
   position: absolute;
   font-size: 29px;
   right: 37px;
+  top: 143px;
   width: 133px;
   color: #FFFFFF;
   background-color: #073B4C;
@@ -102,15 +103,11 @@ form {
   margin-bottom: 5px;
 }
 
-.friend-nick {
-  position: absolute;
-}
-
 .button {
   position: relative;
   background-color: #06D6A0;
   left: 255px;
-  bottom: 2px;
+  bottom: 30px;
   height: 30px;
   width: 70px;
   color: #FFFFFF;
@@ -118,10 +115,17 @@ form {
 
 .red {
   background-color: #EF476F;
+  color: #FFFFFF;
 }
 
 .green {
   background-color: #06D6A0;
+  color: #FFFFFF;
+}
+
+.yellow {
+  background-color: #FFD166;
+  color: #000000;
 }
 
 .status {
@@ -129,6 +133,11 @@ form {
 }
 
 .status-button {
-  margin-right: 10px;
-  color: #FFFFFF;
+  margin-right: 5px;
+  width: 100px;
+}
+
+.scroll-list {
+  overflow: scroll;
+  height: 135px;
 }
