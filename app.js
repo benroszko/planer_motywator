@@ -146,57 +146,93 @@ days = [
 prioTasks = {
   1:{
     id: "",
+    ind: "",
     status: "",
     hour: "",
     date: "",
-    priority: 0
+    priority: 0,
+    dayInd: -1
   },
   2:{
     id: "",
+    ind: "",
     status: "",
     hour: "",
     date: "",
-    priority: 0
+    priority: 0,
+    dayInd: -1
   }};
 
+function planerInit(){
+  prioTasks = {
+    1:{
+      id: "",
+      ind: "",
+      status: "",
+      hour: "",
+      date: "",
+      priority: 0,
+      dayInd: -1
+    },
+    2:{
+      id: "",
+      ind: "",
+      status: "",
+      hour: "",
+      date: "",
+      priority: 0,
+      dayInd: -1
+    }};
 
-router.get('/planer', function(req,res){
   days.forEach((day)=>{
-    let counter = 0;
+    let counter1 = 0;
+    let counter2 = 0;
     let i =0;
     day.top2=[];
-      day.tasks.forEach((task)=>{
-
-        if(task.status === "SUCCESS")counter++;
-        if(task.priority > prioTasks["1"].priority){
+    day.tasks.forEach((task)=>{
+          if(task.status === "FAILURE")counter2++;
+          if(task.status === "SUCCESS")counter1++;
+          if((task.priority > prioTasks["1"].priority) && task.status === "PROGRESS"){
+            console.log(day.ind);
             prioTasks["2"].id = prioTasks["1"].id;
+            prioTasks["2"].ind = prioTasks["1"].ind;
             prioTasks["2"].status = prioTasks["1"].status;
             prioTasks["2"].hour = prioTasks["1"].hour;
             prioTasks["2"].date = prioTasks["1"].date;
             prioTasks["2"].priority = prioTasks["1"].priority;
+            prioTasks["2"].dayInd = prioTasks["1"].dayInd;
 
             prioTasks["1"].id = task.id;
+            prioTasks["1"].ind = day.tasks.indexOf(task)
             prioTasks["1"].status = task.status;
             prioTasks["1"].hour = task.hour;
             prioTasks["1"].date = day.id.split(",")[0];
             prioTasks["1"].priority = task.priority;
+            prioTasks["1"].dayInd = day.id;
 
-          } else if(task.priority > prioTasks["2"].priority && task.id !== prioTasks["1"].id){
+          } else if(task.priority > prioTasks["2"].priority&& task.id !== prioTasks["1"].id && task.status === "PROGRESS"){
             prioTasks["2"].id = task.id;
+            prioTasks["2"].ind = day.tasks.indexOf(task)
             prioTasks["2"].status = task.status;
             prioTasks["2"].hour = task.hour;
             prioTasks["2"].date = day.id.split(",")[0];
             prioTasks["2"].priority = task.priority;
+            prioTasks["2"].dayInd = day.id;
 
           }
-        if(i<2)day.top2.push(task);
-        i++;
-      }
-      );
-      day.extra = day.tasks.length > 2 ? "...+"+(day.tasks.length-2):"";
-      day.progress = parseInt((counter/(day.tasks.length)*100));
+          if(i<2)day.top2.push(task);
+          i++;
+        }
+    );
+    day.extra = day.tasks.length > 2 ? "...+"+(day.tasks.length-2):"";
+    day.progress = parseInt(((counter1/(day.tasks.length-counter2))*100));
+    console.log(day.progress,counter1,counter2,day.tasks.length)
 
   });
+}
+
+router.get('/planer', function(req,res){
+  planerInit();
   res.render(path.join(views_path + 'planer'), {tasks: prioTasks})
 });
 
@@ -245,8 +281,10 @@ router.put('/widok_dnia/:dayId/:taskId', function(req, res) {
 
   const thisDay = days.filter(day => day.id === dayId)[0];
   const thisTask = thisDay.tasks.filter(t => t.id === taskId)[0];
+
   console.log(thisTask);
   thisTask.status = 'SUCCESS';
+  planerInit();
   console.log(thisTask);
 });
 
@@ -273,7 +311,7 @@ router.post('/zadanie/:dayId/:taskId', function(req,res){
   const dayId = req.params['dayId'];
   const taskId = req.params['taskId'];
 
-  console.log(req.body)
+  console.log(req.body);
   days[dayId].tasks[taskId] = req.body;
 
   res.redirect(`/widok_dnia/${dayId}`)

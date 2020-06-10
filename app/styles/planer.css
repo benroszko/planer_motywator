@@ -106,6 +106,8 @@
     height: 110px;
 }
 .task{
+    border: solid 1px;
+    padding-left: 8px;
     margin-left: 67.5px;
     width: 240px;
     height: 40px;
@@ -121,7 +123,7 @@
 
 }
 .task-date{
-    margin-left: 20px;
+    margin-left: 10px;
     margin-top: 8px;
     font-size: 14px;
     display: inline-block;
@@ -192,6 +194,22 @@
 .day-tasks-rest{
     font-size: 14px;
     font-family: "Roboto", sans-serif;
+}
+.complete {
+    float: right;
+    padding-top: 10px;
+    padding-left: 5px;
+    width: 60px;
+    height: 38px;
+    background-color: #06D6A0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+}
+.day-id{
+    visibility: hidden;
+}
+.task-id{
+    visibility: hidden;
 }
 body{
     background-color: #F8F8F8;
