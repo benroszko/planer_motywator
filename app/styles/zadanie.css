@@ -133,7 +133,8 @@ form {
 }
 
 .status-button {
-  margin-right: 10px;
+  margin-right: 5px;
+  width: 100px;
 }
 
 .scroll-list {
