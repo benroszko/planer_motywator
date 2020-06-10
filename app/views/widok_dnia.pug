@@ -70,7 +70,7 @@
                                 <span class="complete" onclick="completeTask()" hidden>ZAKONCZ</span>
                                 .green-square
                                 .hour= task.hour
-                                a(class="name" href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                                a(class="name" href= `../zadanie/${dayIndex}/${index}`)
                                     span(class="name")= task.id
                                 .priority= task.priority
                                 <span class="delete" onclick="removeTask()" hidden>USUN</span>
@@ -79,7 +79,7 @@
                                 <span class="complete" onclick="completeTask()" hidden>ZAKONCZ</span>
                                 .yellow-square
                                 .hour= task.hour
-                                a(class="name" href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                                a(class="name" href= `../zadanie/${dayIndex}/${index}`)
                                     span(class="name")= task.id
                                 .priority= task.priority
                                 <span class="delete" onclick="removeTask()" hidden>USUN</span>
@@ -88,12 +88,12 @@
                                 <span class="complete" onclick="completeTask()" hidden>ZAKONCZ</span>
                                 .red-square
                                 .hour= task.hour
-                                a(class="name" href= `../dodawanie-usuwanie-zadania/${dayIndex}/${index}`)
+                                a(class="name" href= `../zadanie/${dayIndex}/${index}`)
                                     span(class="name")= task.id
                                 .priority= task.priority
                                 <span class="delete" onclick="removeTask()" hidden>USUN</span>
 </div>
-
-    <a href=../dodawanie-usuwanie-zadania><i class="fa fa-plus-circle add-btn fa-4x"></i></a>
+    a(href= `../zadanie/${dayIndex}`)
+        <i class="fa fa-plus-circle add-btn fa-4x"></i>
 </body>
 </html>
