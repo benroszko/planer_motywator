@@ -316,6 +316,7 @@ router.post('/zadanie/:dayId', function(req,res){
   const dayIndex = parseInt(req.params['dayId']);
 
   req.body.priority = parseInt(req.body.priority);
+  req.body.friends = JSON.parse(req.body.friends);
   days[dayIndex].tasks.push(req.body)
 
   res.redirect(`/widok_dnia/${dayIndex}`)
