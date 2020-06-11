@@ -185,6 +185,116 @@ days = [
       }
     ]
   },
+  {
+    id: "03.05, Sroda",
+    progress: 0,
+    ind:2,
+    top2:[],
+    extra:"",
+    tasks: []
+  },{
+    id: "04.06, Czwartek",
+    progress: 0,
+    ind:3,
+    top2:[],
+    extra:"",
+    tasks: [
+      {
+        id: "Nadrobić zaległości",
+        status: "PROGRESS",
+        hour: "12:12",
+        priority: 2,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
+      },
+      {
+        id: "Skoczyć w górę",
+        status: "PROGRESS",
+        hour: "14:20",
+        priority: 3,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
+      },
+      {
+        id: "Spotkanie klubu",
+        status: "PROGRESS",
+        hour: "22:00",
+        priority: 1,
+        friends: [
+          'Jan3', 'Piotrek12', 'Ośmiościan8'
+        ]
+      }
+    ]
+  },
+  {
+    id: "05.05, Piątek",
+    progress: 0,
+    ind:4,
+    top2:[],
+    extra:"",
+    tasks: [
+      {
+        id: "Zrobić fikołka",
+        status: "SUCCESS",
+        hour: "10:00",
+        priority: 2,
+        friends: [
+          'Piotrek12'
+        ]
+      },
+      {
+        id: "Dokończyć projekt z UE",
+        status: "PROGRESS",
+        hour: "12:00",
+        priority: 3,
+        friends: [
+          'Piotrek12'
+        ]
+      }
+
+    ]
+  },
+  {
+    id: "06.05, Sobota",
+    progress: 0,
+    ind:5,
+    top2:[],
+    extra:"",
+    tasks: [
+
+    ]
+  },
+  {
+    id: "07.05, Niedziela",
+    progress: 0,
+    ind:6,
+    top2:[],
+    extra:"",
+    tasks: [
+      {
+        id: "Pościelić łóżko",
+        status: "PROGRESS",
+        hour: "23:00",
+        priority: 3,
+        friends: [
+          'Ośmiościan8'
+        ]
+      }
+    ]
+  },
+
+  {
+    id: "08.05, Poniedziałek",
+    progress: 0,
+    ind:7,
+    top2:[],
+    extra:"",
+    tasks: []
+  },
+
+
 
 ]
 
@@ -271,14 +381,13 @@ function planerInit(){
     );
     day.extra = day.tasks.length > 2 ? "...+"+(day.tasks.length-2):"";
     day.progress = parseInt(((counter1/(day.tasks.length-counter2))*100));
-    console.log(day.progress,counter1,counter2,day.tasks.length)
+    if(isNaN(day.progress))day.progress =0;
 
   });
 }
 
 router.get('/planer', function(req,res){
   planerInit();
-  console.log(prioTasks)
   res.render(path.join(views_path + 'planer'), {tasks: prioTasks})
 });
 
