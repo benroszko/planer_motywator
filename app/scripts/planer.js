@@ -78,32 +78,22 @@ function addSwipes() {
     allTasks.forEach(t => {
         t.addEventListener('touchstart', handleTouchStart, false);
         t.addEventListener('touchmove', handleTouchMove, false);
-
-        t.childNodes.forEach((node, index) => {
-            if (index !== 2) {
-                node.addEventListener('touchstart', handleTouchStart, false);
-                node.addEventListener('touchmove', handleTouchMove, false);
-            } else if (index === 2) {
-                node.addEventListener('click', completeTask);
-            }
-        })
     });
 }
 
-function completeTask(event) {
+function completeTask(elem) {
+    console.log(elem)
 
-    const taskEl = event.target.parentNode;
-    taskEl.childNodes[1].classList.add("green-square");
-    taskEl.childNodes[2].hidden = false;
-
-    const dayId = event.target.parentNode.childNodes[3].childNodes[0].textContent;
-    const taskId = event.target.parentNode.childNodes[4].childNodes[0].textContent;
+    const dayId = elem.parentNode.childNodes[3].childNodes[0].textContent;
+    const taskId = elem.parentNode.childNodes[4].childNodes[0].textContent;
 
     console.log(dayId);
     console.log(taskId);
 
-    const url = "http://localhost:3000/widok_dnia/";
+    const url = "http://localhost:3000/planer";
     const xhr = new XMLHttpRequest();
-    xhr.open("PUT", url+dayId+'/'+taskId, true);
-    xhr.send(null);
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(`dayId=${dayId}&taskId=${taskId}`);
+    location.reload(true/false);
 }

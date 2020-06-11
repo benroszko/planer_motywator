@@ -34,7 +34,7 @@ script(src="../scripts/planer.js")
   .task
       .task-date= task.date +" "+task.hour
       .task-text= task.id
-      <span class="complete" onclick="completeTask()" hidden>Zakończ</span>
+      <span class="complete" onclick="completeTask(this)" hidden>Zakończ</span>
       .day-id=task.dayInd
       .task-id=task.id
 </div>

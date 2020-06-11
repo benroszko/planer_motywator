@@ -278,7 +278,18 @@ function planerInit(){
 
 router.get('/planer', function(req,res){
   planerInit();
+  console.log(prioTasks)
   res.render(path.join(views_path + 'planer'), {tasks: prioTasks})
+});
+
+router.post('/planer', function(req,res){
+  const dayId = req.body.dayId;
+  const taskId = req.body.taskId;
+
+  const thisDay = days.filter(day => day.id === dayId)[0];
+  const thisTask = thisDay.tasks.filter(t => t.id === taskId)[0];
+
+  thisTask.status = 'SUCCESS';
 });
 
 router.get('/znajomi', function(req,res){
@@ -325,7 +336,6 @@ router.put('/widok_dnia/:dayId/:taskId', function(req, res) {
 
   console.log(thisTask);
   thisTask.status = 'SUCCESS';
-  planerInit();
   console.log(thisTask);
 });
 
