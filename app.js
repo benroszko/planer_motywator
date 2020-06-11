@@ -245,7 +245,7 @@ days = [
         ]
       },
       {
-        id: "Dokończyć projekt z UE",
+        id: "Dokończyć projekt",
         status: "PROGRESS",
         hour: "12:00",
         priority: 3,

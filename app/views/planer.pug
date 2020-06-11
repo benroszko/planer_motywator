@@ -31,12 +31,13 @@ script(src="../scripts/planer.js")
 
 <div class="curr-tasks">
  each task, index in prioTasks
-  .task
-      .task-date= task.date +" "+task.hour
-      .task-text= task.id
-      <span class="complete" onclick="completeTask(this)" hidden>Zakończ</span>
-      .day-id=task.dayInd
-      .task-id=task.id
+     if task.id !== ""
+          .task
+              .task-date= task.date +" "+task.hour
+              .task-text= task.id
+              <span class="complete" onclick="completeTask(this)" hidden>Zakończ</span>
+              .day-id=task.dayInd
+              .task-id=task.id
 </div>
 <div class="text-div">
 <p class="main-text">Planer</p>
