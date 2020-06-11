@@ -20,6 +20,7 @@
 .navbar-elem {
     float: none;
     display: table-cell;
+    width: 125px;
     text-align: center;
     vertical-align: center;
     width: 125px;
