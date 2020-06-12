@@ -32,7 +32,7 @@ script(src="../scripts/planer.js")
 <div class="curr-tasks">
  each task, index in prioTasks
      if task.id !== ""
-          .task
+          .task(onclick=`location.href='/zadanie/${task.dayId}/${task.ind}'`)
               .task-date= task.date +" "+task.hour
               .task-text= task.id
               <span class="complete" onclick="completeTask(this)" hidden>Zakończ</span>
@@ -49,8 +49,11 @@ each day in days
             .day-weekday= day.id.split(",")[1]
             .day-date= day.id.split(",")[0]
         .day-tasks(onclick=`location.href='/widok_dnia/${day.ind}'`)
-            each task in day.top2
-                .day-task= task.hour + " " + task.id
+            if day.top2.length !== 0
+                each task in day.top2
+                    .day-task= task.hour + " " + task.id
+            else
+                .day-task-notask= "Brak zadań"
             .day-task= day.extra
         .day-bar
             .day-bar-prog(style="width:" + day.progress + "%")
