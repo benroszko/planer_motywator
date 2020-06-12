@@ -459,13 +459,26 @@ router.get('/zadanie/:dayId/:taskId', function(req,res){
 
 router.get('/zadanie/:dayId', function(req,res){
   var d = new Date();
+  var hour = d.getHours();
+  var min = d.getMinutes();
+  if(hour < 10){
+    hour = '0' + hour;
+  }
+  if(min < 10){
+    min = '0' + min;
+  }
+
+  console.log(d.getTime())
+
   var task = {
     id: "",
     status: "PROGRESS",
-    hour: `${d.getHours()}:${d.getMinutes()}`,
-    priority: 1,
+    hour: `${hour}:${min}`,
+    priority: 2,
     friends: []
   };
+
+  console.log(task.hour)
   var inviteable = users.filter(user => user.friend);
 
   res.render(path.join(views_path + 'zadanie'), {inviteable: inviteable, task: task})
