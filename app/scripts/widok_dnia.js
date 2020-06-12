@@ -102,24 +102,24 @@ function sortBy(sortingValue) {
   switch (sortingValue) {
     case "NAME":
       dict = new Map();
-      allTasks.forEach(t => dict.set(t.textContent.substr(5), t.cloneNode(true)));
-      sortedTasks = allTasks.map(t => t.textContent.substr(5)).sort();
+      allTasks.forEach(t => dict.set(t.textContent.substr(12), t.cloneNode(true)));
+      sortedTasks = allTasks.map(t => t.textContent.substr(12)).sort();
       allTasks.forEach((t, i) => {
         t.replaceWith(dict.get(sortedTasks[i]));
       });
       break;
     case "HOUR":
       dict = new Map();
-      allTasks.forEach(t => dict.set(t.textContent.substr(0, 5), t.cloneNode(true)));
-      sortedTasks = allTasks.map(t => t.textContent.substr(0, 5)).sort();
+      allTasks.forEach(t => dict.set(t.textContent.substr(7, 12), t.cloneNode(true)));
+      sortedTasks = allTasks.map(t => t.textContent.substr(7, 12)).sort();
       allTasks.forEach((t, i) => {
         t.replaceWith(dict.get(sortedTasks[i]));
       });
       break;
     case "PRIORITY":
       dict = new Map();
-      allTasks.forEach(t => dict.set(t.textContent.substr(t.textContent.length - 1) + t.textContent.substr(0, 5), t.cloneNode(true)));
-      sortedTasks = allTasks.map(t => t.textContent.substr(t.textContent.length - 1) + t.textContent.substr(0, 5)).sort().reverse();
+      allTasks.forEach(t => dict.set(t.textContent.substr(t.textContent.length - 5) + t.textContent.substr(7, 12), t.cloneNode(true)));
+      sortedTasks = allTasks.map(t => t.textContent.substr(t.textContent.length - 5) + t.textContent.substr(7, 12)).sort().reverse();
       allTasks.forEach((t, i) => {
         t.replaceWith(dict.get(sortedTasks[i]));
       });
@@ -181,9 +181,15 @@ function removeTask(event) {
 
 function completeTask(event) {
   const taskEl = event.target.parentNode;
+
+  if (taskEl.classList.contains("opacity")) {
+    taskEl.classList.remove("opacity")
+  }
+  
   taskEl.childNodes[1].classList.remove("yellow-square");
   taskEl.childNodes[1].classList.remove("red-square");
   taskEl.childNodes[1].classList.add("green-square");
+  taskEl.classList.add("green-border");
   taskEl.childNodes[0].hidden = true;
   taskEl.style.paddingLeft = "10px";
 
