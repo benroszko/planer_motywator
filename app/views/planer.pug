@@ -32,7 +32,7 @@ script(src="../scripts/planer.js")
 <div class="curr-tasks">
  each task, index in prioTasks
      if task.id !== ""
-          .task
+          .task(onclick=`location.href='/zadanie/${task.dayId}/${task.ind}'`)
               .task-date= task.date +" "+task.hour
               .task-text= task.id
               <span class="complete" onclick="completeTask(this)" hidden>Zakończ</span>

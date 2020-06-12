@@ -356,6 +356,8 @@ function planerInit(){
             prioTasks["2"].date = prioTasks["1"].date;
             prioTasks["2"].priority = prioTasks["1"].priority;
             prioTasks["2"].dayInd = prioTasks["1"].dayInd;
+            prioTasks["2"].dayId = prioTasks["1"].dayId;
+
 
             prioTasks["1"].id = task.id;
             prioTasks["1"].ind = day.tasks.indexOf(task)
@@ -364,6 +366,8 @@ function planerInit(){
             prioTasks["1"].date = day.id.split(",")[0];
             prioTasks["1"].priority = task.priority;
             prioTasks["1"].dayInd = day.id;
+            prioTasks["1"].dayId = day.ind;
+
 
           } else if(task.priority > prioTasks["2"].priority&& task.id !== prioTasks["1"].id && task.status === "PROGRESS"){
             prioTasks["2"].id = task.id;
@@ -373,7 +377,7 @@ function planerInit(){
             prioTasks["2"].date = day.id.split(",")[0];
             prioTasks["2"].priority = task.priority;
             prioTasks["2"].dayInd = day.id;
-
+            prioTasks["2"].dayId = day.ind;
           }
           if(i<2)day.top2.push(task);
           i++;
