@@ -59,14 +59,20 @@
         .friends-label= "Status zadania"
         case task.status
             when "PROGRESS"
-                button(class="status-button red" onclick="onClickFailure(this)")= "Nieudane"
-                button(class="status-button green" onclick="onClickSuccess(this)")= "Zakończone"
+                select(class="status-select yellow" id="status" name="status" onchange="changeStatusColor(this)")
+                    option(class="yellow" value="PROGRESS" selected)= "W trakcie"
+                    option(class="red" value="FAILURE")= "Nieudane"
+                    option(class="green" value="SUCCESS")= "Zakończone"
             when "FAILURE"
-                button(class="status-button green" onclick="onClickSuccess(this)")= "Zakończone"
-                button(class="status-button yellow" onclick="onClickProgress(this)")= "W trakcie"
+                select(class="status-select red" id="status" name="status" onchange="changeStatusColor(this)")
+                    option(class="yellow" value="PROGRESS")= "W trakcie"
+                    option(class="red" value="FAILURE" selected)= "Nieudane"
+                    option(class="green" value="SUCCESS")= "Zakończone"
             when "SUCCESS"
-                button(class="status-button red" onclick="onClickFailure(this)")= "Nieudane"
-                button(class="status-button yellow" onclick="onClickProgress(this)")= "W trakcie"
+                select(class="status-select green" id="status" name="status" onchange="changeStatusColor(this)")
+                    option(class="yellow" value="PROGRESS")= "W trakcie"
+                    option(class="red" value="FAILURE")= "Nieudane"
+                    option(class="green" value="SUCCESS" selected)= "Zakończone"
 
 </body>
     <script>

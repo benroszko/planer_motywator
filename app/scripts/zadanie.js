@@ -1,57 +1,17 @@
-function onClickFailure(elem){
-    document.querySelector(".status-input").value = "FAILURE";
-
-    var button = Array.from(document.querySelectorAll(".status-button")).filter(b => b != elem)[0]
-    elem.classList.remove('red');
-
-    if(button.textContent == "W trakcie"){
-        elem.textContent = "Zakończone";
-        elem.classList.add('green');
-        elem.addEventListener("click", function(){onClickSuccess(elem)})
-    }
-    else{
-        elem.textContent = "W trakcie";
-        elem.classList.add('yellow');
-        elem.addEventListener("click", function(){onClickProgress(elem)})
+function changeStatusColor(elem){
+    document.querySelector(".status-input").value = elem.value;
+    switch(elem.value){
+        case "PROGRESS":
+            elem.classList= 'status-select yellow';
+            break;
+        case "FAILURE":
+            elem.classList= 'status-select red';
+            break;
+        case "SUCCESS":
+            elem.classList= 'status-select green';
+            break;
     }
 }
-
-function onClickSuccess(elem){
-    document.querySelector(".status-input").value = "SUCCESS";
-
-    var button = Array.from(document.querySelectorAll(".status-button")).filter(b => b != elem)[0]
-    elem.classList.remove('green');
-
-    if(button.textContent == "W trakcie"){
-        elem.textContent = "Nieudane";
-        elem.classList.add('red');
-        elem.addEventListener("click", function(){onClickFailure(elem)})
-    }
-    else{
-        elem.textContent = "W trakcie";
-        elem.classList.add('yellow');
-        elem.addEventListener("click", function(){onClickProgress(elem)})
-    }
-}
-
-function onClickProgress(elem){
-    document.querySelector(".status-input").value = "PROGRESS";
-    
-    var button = Array.from(document.querySelectorAll(".status-button")).filter(b => b != elem)[0]
-    elem.classList.remove('yellow');
-
-    if(button.textContent == "Nieudane"){
-        elem.textContent = "Zakończone";
-        elem.classList.add('green');
-        elem.addEventListener("click", function(){onClickSuccess(elem)})
-    }
-    else{
-        elem.textContent = "Nieudane";
-        elem.classList.add('red');
-        elem.addEventListener("click", function(){onClickFailure(elem)})
-    }
-}
-
 
 function addFriend(elem){
     document.querySelector(".scroll-list").appendChild(elem.parentNode);
