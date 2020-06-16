@@ -492,7 +492,8 @@ router.post('/zadanie/:dayId', function(req,res){
   req.body.friends = JSON.parse(req.body.friends);
   days[dayIndex].tasks.push(req.body)
 
-  res.redirect(`/widok_dnia/${dayIndex}`)
+  res.sendStatus(200);
+  //res.redirect(`/widok_dnia/${dayIndex}`)
 });
 
 router.post('/zadanie/:dayId/:taskId', function(req,res){
@@ -504,7 +505,8 @@ router.post('/zadanie/:dayId/:taskId', function(req,res){
   req.body.friends = JSON.parse(req.body.friends);
   days[dayId].tasks[taskId] = req.body;
 
-  res.redirect(`/widok_dnia/${dayId}`)
+  res.sendStatus(200);
+  //res.redirect(`/widok_dnia/${dayId}`)
 });
 
 router.get('/', function(req,res){

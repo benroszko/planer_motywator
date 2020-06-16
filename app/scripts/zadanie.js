@@ -47,12 +47,18 @@ async function onSubmit(event){
     }
 
     var taskNameElem = document.querySelector(".task-header");
-    if(taskNameElem.value.length == 0){
+    if(taskNameElem.value.length === 0){
         taskNameElem.style.backgroundColor = "#EF476F";
         await new Promise(r => setTimeout(r, 500));
         taskNameElem.style.backgroundColor = "#073B4C";
     }
     else{
-        document.querySelector("form").submit();
+        const xhr = new XMLHttpRequest();
+        xhr.open("PUT", window.location.href, true);
+        console.log(document.querySelector("form"));
+        xhr.send(null);
+        //document.querySelector("form").submit();
     }
+
+    history.back();
 }

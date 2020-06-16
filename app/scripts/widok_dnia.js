@@ -185,7 +185,7 @@ function completeTask(event) {
   if (taskEl.classList.contains("opacity")) {
     taskEl.classList.remove("opacity")
   }
-  
+
   taskEl.childNodes[1].classList.remove("yellow-square");
   taskEl.childNodes[1].classList.remove("red-square");
   taskEl.childNodes[1].classList.add("green-square");
