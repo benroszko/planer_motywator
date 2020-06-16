@@ -488,6 +488,7 @@ router.get('/zadanie/:dayId', function(req,res){
 router.post('/zadanie/:dayId', function(req,res){
   const dayIndex = parseInt(req.params['dayId']);
 
+  console.log(req.body)
   req.body.priority = parseInt(req.body.priority);
   req.body.friends = JSON.parse(req.body.friends);
   days[dayIndex].tasks.push(req.body)

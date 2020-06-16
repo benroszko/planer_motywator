@@ -54,11 +54,21 @@ async function onSubmit(event){
     }
     else{
         const xhr = new XMLHttpRequest();
-        xhr.open("PUT", window.location.href, true);
-        console.log(document.querySelector("form"));
-        xhr.send(null);
+        xhr.open("POST", window.location.href, true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        const id = document.querySelector("input[name='id']").value;
+        const priority = document.querySelector("select[name='priority']").value;
+        const hour = document.querySelector("input[name='hour']").value;
+        const status = document.querySelector("input[name='status']").value;
+        const friends = document.querySelector("input[name='friends']").value;
+
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                location.replace(document.referrer);
+            }
+        };
+        
+        xhr.send(`id=${id}&priority=${priority}&hour=${hour}&status=${status}&friends=${friends}`);
         //document.querySelector("form").submit();
     }
-
-    history.back();
 }
