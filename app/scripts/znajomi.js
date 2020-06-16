@@ -52,13 +52,15 @@ function formChanged(){
         activeUserNick = filteredNotFriends[0].querySelector(".list-elem-nick").textContent;
         document.querySelector(".add-btn").style.opacity = 1.0;
     }else{
-        document.querySelector(".add-btn").style.opacity = 0.6;
+        document.querySelector(".add-btn").style.opacity = 0;
     }
 }
 
-function onClick(){
+async function onClick(){
     if(document.querySelector(".add-btn").style.opacity == 1.0){
         document.querySelector(".form-control").value = activeUserNick
+        document.querySelector(".friend-added").style.display = "block";
+        await new Promise(r => setTimeout(r, 500));
         document.querySelector("form").submit();
     }
 }
